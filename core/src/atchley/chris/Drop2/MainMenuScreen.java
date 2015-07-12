@@ -5,6 +5,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
+import java.util.Calendar;
+
 /**
  * Created by Chris on 6/24/2015.
  */
@@ -25,6 +27,7 @@ public class MainMenuScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
+
     }
 
     @Override
@@ -32,17 +35,24 @@ public class MainMenuScreen implements Screen {
 
     }
 
+
+
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+        String date = String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_YEAR));
+        Gdx.gl.glClearColor(0, 255, 255, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Welcome to Drop!!! ", 100, 150);
-        game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
+
+        AssetLoader.font.draw(game.batch, date,Gdx.graphics.getWidth()/2 ,Gdx.graphics.getHeight()/3);
+        AssetLoader.font.drawWrapped(game.batch, "Tap anywhere to reveal answer!  This is a test of the textwrap." +
+                "I am writing a long ass piece of text to see how it conforms to the screen.", 100   , 200,Gdx.graphics.getWidth()-100);
+
         game.batch.end();
         //mAdsController.showBannerAd();
 

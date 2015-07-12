@@ -49,6 +49,7 @@ project(":android") {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         compile 'com.google.android.gms:play-services-ads:7.5.0'
+        compile fileTree(dir: '../libs', include: '*.jar')
 
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -83,6 +84,7 @@ project(":core") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        compile fileTree(dir: '../libs', include: '*.jar')
     }
 }
 

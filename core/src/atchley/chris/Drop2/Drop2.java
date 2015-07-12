@@ -10,20 +10,24 @@ public class Drop2 extends Game{
 
     public SpriteBatch batch;
     public BitmapFont font;
-
-
-
     public AdsController adsController;
+
+
 
     public Drop2(AdsController adsController){
         this.adsController = adsController;
     }
 
+
+
+
     public void create() {
+        AssetLoader.load();
         batch = new SpriteBatch();
         //Use LibGDX's default Arial font.
-        font = new BitmapFont();
-        this.setScreen(new MainMenuScreen(this, adsController));
+//        font = new BitmapFont(Gdx.files.internal("data/text.fnt"));
+//        font.setScale(1f,1f);
+        this.setScreen(new SplashScreen(this, adsController));
     }
 
     public void render() {
@@ -32,7 +36,8 @@ public class Drop2 extends Game{
 
     public void dispose() {
         batch.dispose();
-        font.dispose();
+
+        AssetLoader.dispose();
     }
 
 
